@@ -50,5 +50,5 @@ jobs:
           sudo docker pull epgarzonr/apphello:latest
 
 
-          sudo docker ps -q --filter "name=apphello" | grep -q . && docker stop index && docker rm apphello || true
-          sudo docker run -d --name index -p 80:80 epgarzonr/apphello:latest
+          sudo docker ps -q --filter "name=apphello" | grep -q . && docker stop apphello && docker rm apphello || true
+          sudo docker run -d --name apphello -p 80:80 epgarzonr/apphello:latest
