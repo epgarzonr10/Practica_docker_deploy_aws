@@ -110,4 +110,5 @@ Once you push, the GitHub Actions workflow kicks off again.
 
 ### GitHub Actions Workflow Update 🔄
 Here’s a snapshot of the workflow running again, confirming the successful update and deployment of the new image:
+
 ![Workflow Update](images/Workflow-Update.png)
