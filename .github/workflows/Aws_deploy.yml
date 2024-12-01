@@ -20,8 +20,8 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build . --file Dockerfile --tag epgarzonr/index:latest
-        docker push epgarzonr/index:latest
+        docker build . --file Dockerfile --tag epgarzonr/appHello:latest
+        docker push epgarzonr/appHello:latest
 
   deploy:
     name: Deploy to EC2
@@ -35,17 +35,14 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
-        port: 80
+        port: 22
         script: |
-          # Actualizar y configurar Docker
           sudo apt update -y
           sudo apt install -y docker
           sudo service docker start
           sudo usermod -a -G docker ec2-user
 
-          # Descargar la imagen Docker desde DockerHub
-          sudo docker pull epgarzonr/index:latest
+          sudo docker pull epgarzonr/appHello:latest
 
-          # Detener cualquier contenedor existente y desplegar el nuevo
-          sudo docker ps -q --filter "name=index" | grep -q . && docker stop index && docker rm index || true
-          sudo docker run -d --name index -p 80:80 epgarzonr/index:latest
+          sudo docker ps -q --filter "name=appHello" | grep -q . && docker stop appHello && docker rm appHello || true
+          sudo docker run -d --name appHello -p 80:80 epgarzonr/appHello:latest
