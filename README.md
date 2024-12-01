@@ -16,13 +16,21 @@ This project demonstrates a **continuous deployment workflow** to an AWS EC2 ins
 
 ```bash
 .
+│
 ├── .github/
 │   └── workflows/
 │       └── aws_deploy.yml      # GitHub Actions workflow file for deployment
+│
+├── images/                    # Folder for images, to be ignored by Docker
+│   ├── image1.png
+│   └── ...
+│
 ├── index.html                  # Main HTML file for the project
 ├── styles.css                  # CSS file for styling the HTML page
 ├── Dockerfile                  # Dockerfile to containerize the project
+├── .dockerignore               # File to exclude unnecessary files (like Readme and images) from Docker build
 └── README.md                   # Documentation for the project
+
 
 ```
 ## Workflow Explanation
@@ -42,3 +50,4 @@ This project demonstrates a **continuous deployment workflow** to an AWS EC2 ins
 ### Explanation ⚙️:
 
 This `README.md` provides a detailed description of the `Dockerfile` and its role in the deployment pipeline. It breaks down each command used in the `Dockerfile` and explains how they contribute to containerizing the web application. Additionally, it explains how the Docker image is used in the GitHub Actions workflow for automated deployment to AWS.
+
