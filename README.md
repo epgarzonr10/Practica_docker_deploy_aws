@@ -15,14 +15,16 @@ This project demonstrates a **continuous deployment workflow** to an AWS EC2 ins
 ## Project Structure 🛠️
 
 ```bash
-.
+Practice_docker_deploy_aws/
 ├── .github/
 │   └── workflows/
-│       └── aws_deploy.yml      # GitHub Actions workflow file for deployment
+│       └── aws_deploy.yml      # GitHub Actions workflow file for deployment automation
+├── images/                     # Folder to store images used in the project
+├── .dockerignore               # File to exclude files when building the Docker image
+├── Dockerfile                  # File to define the Docker image for the project
+├── README.md                   # Project documentation
 ├── index.html                  # Main HTML file for the project
 ├── styles.css                  # CSS file for styling the HTML page
-├── Dockerfile                  # Dockerfile to containerize the project
-└── README.md                   # Documentation for the project
 
 ```
 ## Workflow Explanation
