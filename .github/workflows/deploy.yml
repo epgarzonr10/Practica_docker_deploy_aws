@@ -2,7 +2,7 @@ name: Docker CD
 
 on:
   push:
-    branches: 
+    branches:
       - "main"  
 
 jobs:
@@ -28,7 +28,6 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-
         docker build . --file Dockerfile --tag epgarzonr/apphello:${VERSION_TAG} --tag epgarzonr/apphello:latest
         docker push epgarzonr/apphello:${VERSION_TAG}
         docker push epgarzonr/apphello:latest
@@ -46,7 +45,6 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         port: 22 
-        
         script: |
           sudo docker --version || sudo apt install -y docker
           sudo service docker start || true
@@ -54,4 +52,6 @@ jobs:
           sudo docker pull epgarzonr/apphello:latest
 
           sudo docker ps -q --filter "name=apphello" | grep -q . && docker stop apphello && docker rm apphello || true
+          
           sudo docker run -d --name apphello -p 80:80 epgarzonr/apphello:latest
+          sudo docker ps --filter "name=apphello"
